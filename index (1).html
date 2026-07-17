@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Medicare Questions Answered | Bryant Waldron Insurance | Richmond, Sugar Land & Houston Area, TX</title>
+<style>
+  :root{
+    --navy: #0F2A4A;
+    --navy-deep: #081A30;
+    --gold: #B8912F;
+    --gold-light: #D8B863;
+    --cream: #FBF8F2;
+    --ink: #1C2B3A;
+    --ink-soft: #4A5A6A;
+    --line: #E3DCC9;
+    --white: #FFFFFF;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family: Georgia, 'Times New Roman', serif;
+    background:var(--cream);
+    color:var(--ink);
+    line-height:1.6;
+    font-size:18px;
+  }
+  h1,h2,h3{
+    font-family: Georgia, 'Times New Roman', serif;
+    color:var(--navy);
+    margin:0 0 .5em 0;
+    font-weight:700;
+  }
+  p{margin:0 0 1em 0;}
+  a{color:var(--navy);}
+  .sans{font-family: 'Segoe UI', Arial, Helvetica, sans-serif;}
+  .container{max-width:1080px;margin:0 auto;padding:0 24px;}
+
+  /* Header */
+  header{
+    background:var(--navy-deep);
+    color:var(--cream);
+    padding:16px 0;
+    border-bottom:3px solid var(--gold);
+  }
+  header .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+  .brand{font-size:1.3rem;font-weight:700;color:var(--white);letter-spacing:.3px;}
+  .brand span{color:var(--gold-light);}
+  .header-phone{
+    font-family:'Segoe UI', Arial, sans-serif;
+    font-size:1.15rem;
+    font-weight:700;
+    color:var(--gold-light);
+    text-decoration:none;
+    white-space:nowrap;
+  }
+
+  /* Hero */
+  .hero{
+    background: linear-gradient(180deg, var(--navy) 0%, var(--navy-deep) 100%);
+    color:var(--cream);
+    padding:64px 0 76px 0;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero .container{
+    display:grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap:48px;
+    align-items:start;
+    position:relative;
+    z-index:2;
+  }
+  .compass{
+    position:absolute;
+    right:-60px;
+    top:-60px;
+    width:340px;
+    height:340px;
+    opacity:0.10;
+    z-index:1;
+  }
+  .eyebrow{
+    font-family:'Segoe UI', Arial, sans-serif;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    font-size:.82rem;
+    color:var(--gold-light);
+    font-weight:700;
+    margin-bottom:14px;
+  }
+  .hero h1{
+    color:var(--white);
+    font-size:2.5rem;
+    line-height:1.2;
+    margin-bottom:20px;
+  }
+  .hero p.lead{
+    font-size:1.15rem;
+    color:#DCE4EC;
+    max-width:520px;
+  }
+  .trust-row{
+    display:flex;
+    gap:24px;
+    flex-wrap:wrap;
+    margin-top:28px;
+    font-family:'Segoe UI', Arial, sans-serif;
+    font-size:.92rem;
+    color:var(--gold-light);
+  }
+  .trust-row .item{display:flex;align-items:center;gap:8px;}
+  .trust-row .dot{width:6px;height:6px;background:var(--gold-light);border-radius:50%;display:inline-block;}
+
+  /* Form card */
+  .form-card{
+    background:var(--cream);
+    border-radius:6px;
+    padding:32px;
+    box-shadow:0 20px 50px rgba(0,0,0,0.35);
+    border-top:4px solid var(--gold);
+  }
+  .form-card h2{
+    font-size:1.35rem;
+    margin-bottom:6px;
+  }
+  .form-card .sub{
+    font-family:'Segoe UI', Arial, sans-serif;
+    color:var(--ink-soft);
+    font-size:.95rem;
+    margin-bottom:20px;
+  }
+  label{
+    display:block;
+    font-family:'Segoe UI', Arial, sans-serif;
+    font-size:.88rem;
+    font-weight:700;
+    color:var(--navy);
+    margin-bottom:6px;
+  }
+  input[type="text"], input[type="tel"], input[type="email"], select{
+    width:100%;
+    padding:12px 14px;
+    margin-bottom:16px;
+    border:1.5px solid var(--line);
+    border-radius:4px;
+    font-family:'Segoe UI', Arial, sans-serif;
+    font-size:1rem;
+    background:var(--white);
+    color:var(--ink);
+  }
+  input:focus, select:focus{
+    outline:3px solid var(--gold-light);
+    outline-offset:1px;
+    border-color:var(--gold);
+  }
+  .consent{
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+    margin-bottom:18px;
+  }
+  .consent input{width:auto;margin-top:4px;}
+  .consent label{
+    font-weight:400;
+    font-size:.82rem;
+    color:var(--ink-soft);
+    line-height:1.4;
+  }
+  button.cta{
+    width:100%;
+    background:var(--gold);
+    color:var(--navy-deep);
+    border:none;
+    padding:16px;
+    font-family:'Segoe UI', Arial, sans-serif;
+    font-weight:700;
+    font-size:1.05rem;
+    border-radius:4px;
+    cursor:pointer;
+    transition:background .15s ease;
+  }
+  button.cta:hover{background:var(--gold-light);}
+  button.cta:focus-visible{outline:3px solid var(--navy);outline-offset:2px;}
+  .form-note{
+    font-family:'Segoe UI', Arial, sans-serif;
+    font-size:.78rem;
+    color:var(--ink-soft);
+    text-align:center;
+    margin-top:12px;
+  }
+  .success-msg{
+    display:none;
+    background:#F2F8F0;
+    border:1.5px solid #7BAA6E;
+    color:#2C4A22;
+    padding:16px;
+    border-radius:4px;
+    font-family:'Segoe UI', Arial, sans-serif;
+    font-size:.95rem;
+    margin-bottom:20px;
+  }
+  .field-error{
+    display:block;
+    color:#B3261E;
+    font-family:'Segoe UI', Arial, sans-serif;
+    font-size:.82rem;
+    margin:-10px 0 12px 0;
+  }
+
+  /* Steps */
+  .steps-section{padding:64px 0;background:var(--white);}
+  .section-title{text-align:center;max-width:640px;margin:0 auto 44px auto;}
+  .section-title .eyebrow{color:var(--gold);text-align:center;}
+  .section-title h2{font-size:1.9rem;}
+  .steps{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:32px;
+  }
+  .step{
+    padding:28px 24px;
+    border:1.5px solid var(--line);
+    border-radius:6px;
+    position:relative;
+  }
+  .step-num{
+    font-family:'Segoe UI', Arial, sans-serif;
+    font-size:.8rem;
+    font-weight:700;
+    color:var(--gold);
+    letter-spacing:1.5px;
+    margin-bottom:10px;
+  }
+  .step h3{font-size:1.15rem;margin-bottom:8px;}
+  .step p{font-family:'Segoe UI', Arial, sans-serif;color:var(--ink-soft);font-size:.95rem;margin:0;}
+
+  /* Why section */
+  .why-section{padding:64px 0;background:var(--cream);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px 40px;}
+  .why-item{display:flex;gap:16px;}
+  .why-icon{
+    flex-shrink:0;
+    width:44px;height:44px;
+    border-radius:50%;
+    background:var(--navy);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .why-icon svg{width:22px;height:22px;stroke:var(--gold-light);}
+  .why-text h3{font-size:1.05rem;margin-bottom:4px;}
+  .why-text p{font-family:'Segoe UI', Arial, sans-serif;font-size:.92rem;color:var(--ink-soft);margin:0;}
+
+  /* FAQ */
+  .faq-section{padding:64px 0;background:var(--white);}
+  .faq{max-width:760px;margin:0 auto;}
+  .faq-item{border-bottom:1px solid var(--line);padding:22px 0;}
+  .faq-item h3{font-size:1.1rem;margin-bottom:6px;}
+  .faq-item p{font-family:'Segoe UI', Arial, sans-serif;color:var(--ink-soft);font-size:.95rem;margin:0;}
+
+  /* Bottom CTA */
+  .bottom-cta{
+    background:var(--navy-deep);
+    color:var(--cream);
+    text-align:center;
+    padding:56px 0;
+  }
+  .bottom-cta h2{color:var(--white);font-size:1.8rem;margin-bottom:10px;}
+  .bottom-cta p{color:#C7D2DD;font-family:'Segoe UI', Arial, sans-serif;max-width:520px;margin:0 auto 26px auto;}
+  .bottom-cta .btn-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+  .btn-gold, .btn-outline{
+    font-family:'Segoe UI', Arial, sans-serif;
+    font-weight:700;
+    padding:14px 28px;
+    border-radius:4px;
+    text-decoration:none;
+    font-size:1rem;
+    display:inline-block;
+  }
+  .btn-gold{background:var(--gold);color:var(--navy-deep);}
+  .btn-outline{border:1.5px solid var(--gold-light);color:var(--gold-light);}
+
+  /* Footer */
+  footer{
+    background:var(--navy-deep);
+    color:#9FB0C0;
+    padding:36px 0 28px 0;
+    font-family:'Segoe UI', Arial, sans-serif;
+    font-size:.8rem;
+  }
+  footer .footer-top{
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px;
+    padding-bottom:20px;margin-bottom:20px;
+    border-bottom:1px solid rgba(255,255,255,0.12);
+  }
+  footer .footer-brand{color:var(--gold-light);font-weight:700;font-size:.95rem;}
+  footer p{margin:0 0 10px 0;line-height:1.6;}
+  footer .disclaimer{max-width:900px;}
+
+  @media (max-width:860px){
+    body{font-size:16.5px;}
+    .hero .container{grid-template-columns:1fr;}
+    .hero h1{font-size:2rem;}
+    .steps{grid-template-columns:1fr;}
+    .why-grid{grid-template-columns:1fr;}
+    .compass{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="brand">BRYANT WALDRON <span>INSURANCE</span></div>
+    <a class="header-phone" href="tel:7138827196">713-882-7196</a>
+  </div>
+</header>
+
+<section class="hero">
+  <svg class="compass" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="100" cy="100" r="98" stroke="#D8B863" stroke-width="1.5"/>
+    <circle cx="100" cy="100" r="70" stroke="#D8B863" stroke-width="1"/>
+    <path d="M100 20 L108 92 L100 100 L92 92 Z" fill="#D8B863"/>
+    <path d="M100 180 L108 108 L100 100 L92 108 Z" fill="#D8B863" fill-opacity="0.5"/>
+    <circle cx="100" cy="100" r="4" fill="#D8B863"/>
+  </svg>
+  <div class="container">
+    <div>
+      <div class="eyebrow">Fort Bend County &middot; Richmond &middot; Sugar Land &middot; Greater Houston</div>
+      <h1>Medicare doesn't have to be confusing.<br>Let's go through it together.</h1>
+      <p class="lead">One conversation with a local, licensed independent agent — no cost, no obligation, no pressure. Just clear answers about your Medicare options.</p>
+      <div class="trust-row">
+        <span class="item"><span class="dot"></span>Licensed independent agent</span>
+        <span class="item"><span class="dot"></span>Serving Fort Bend County &amp; the Greater Houston area</span>
+        <span class="item"><span class="dot"></span>Available year-round, not just AEP</span>
+      </div>
+    </div>
+
+    <div class="form-card" id="leadForm">
+      <h2>Request your free Medicare guide &amp; call</h2>
+      <p class="sub">Fill this out and Bryant will personally reach out — usually the same day.</p>
+
+      <div data-fs-success class="success-msg" id="successMsg">
+        Thank you — your request has been received. Bryant will reach out at your preferred time to answer your Medicare questions.
+      </div>
+
+      <form id="medicareForm">
+        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="_subject" value="New Medicare lead from website">
+
+        <label for="name">Full name</label>
+        <input type="text" id="name" name="name" data-fs-field required>
+        <span class="field-error" data-fs-error="name"></span>
+
+        <label for="phone">Phone number</label>
+        <input type="tel" id="phone" name="phone" data-fs-field required>
+        <span class="field-error" data-fs-error="phone"></span>
+
+        <label for="email">Email (optional)</label>
+        <input type="email" id="email" name="email" data-fs-field>
+        <span class="field-error" data-fs-error="email"></span>
+
+        <label for="timing">When do you need help?</label>
+        <select id="timing" name="timing" data-fs-field>
+          <option value="Call Now">Call me now &mdash; I have a question today</option>
+          <option value="Planning for AEP">Just planning ahead for AEP (Oct 15 &ndash; Dec 7)</option>
+        </select>
+
+        <label for="besttime">Best time to call</label>
+        <select id="besttime" name="besttime" data-fs-field>
+          <option value="Morning">Morning</option>
+          <option value="Afternoon">Afternoon</option>
+          <option value="Evening">Evening</option>
+          <option value="Anytime">Anytime</option>
+        </select>
+
+        <div class="consent">
+          <input type="checkbox" id="consent" name="consent" data-fs-field required>
+          <label for="consent">I agree to be contacted by phone, text, or email by a licensed insurance agent about Medicare Advantage, Medicare Supplement, and Prescription Drug plans. Submitting this form does not obligate me to enroll in anything, and I can withdraw consent at any time.</label>
+        </div>
+
+        <span class="field-error" data-fs-error="_form"></span>
+        <button type="submit" class="cta" data-fs-submit-btn>Get My Free Guide &amp; Schedule a Call</button>
+        <p class="form-note">No spam. No obligation. Your information is never sold.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="steps-section">
+  <div class="container">
+    <div class="section-title">
+      <div class="eyebrow sans">How it works</div>
+      <h2>Three simple steps</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">STEP ONE</div>
+        <h3>Reach out</h3>
+        <p>Submit the form or call directly. Takes less than a minute.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">STEP TWO</div>
+        <h3>Talk it through</h3>
+        <p>Bryant calls to understand your situation, your doctors, and your priorities — no scripts, just a real conversation.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">STEP THREE</div>
+        <h3>Decide with confidence</h3>
+        <p>Review your options at your own pace. Enroll if and when you're ready — never before.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why-section">
+  <div class="container">
+    <div class="section-title">
+      <div class="eyebrow sans">Why work with an independent agent</div>
+      <h2>Someone in your corner, not a call center</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 2L3 7v5c0 5 4 9 9 10 5-1 9-5 9-10V7z"/></svg></div>
+        <div class="why-text">
+          <h3>Local &amp; independent</h3>
+          <p>Based right here in Richmond, not a national call center. Bryant represents multiple insurance companies, so the conversation starts with your needs, not one company's product.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 20l9-5-9-5-9 5 9 5z"/><path d="M12 12l9-5-9-5-9 5 9 5z"/></svg></div>
+        <div class="why-text">
+          <h3>Education first</h3>
+          <p>You'll get plain-English explanations of how Medicare works — Parts A, B, C, D, and Supplement plans — before anyone talks about specific products.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+        <div class="why-text">
+          <h3>Here year-round</h3>
+          <p>Questions don't stop when the enrollment period ends. Bryant is available for follow-up questions, renewals, and life changes all year long.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M4 19V5a2 2 0 012-2h8l6 6v10a2 2 0 01-2 2H6a2 2 0 01-2-2z"/></svg></div>
+        <div class="why-text">
+          <h3>No cost to you</h3>
+          <p>Working with an independent agent costs nothing extra. There's no fee for the conversation, the guide, or the help understanding your options.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq-section">
+  <div class="container">
+    <div class="section-title">
+      <div class="eyebrow sans">Common questions</div>
+      <h2>Before you reach out</h2>
+    </div>
+    <div class="faq">
+      <div class="faq-item">
+        <h3>Will I be pressured to sign up for anything?</h3>
+        <p>No. The goal of the first conversation is simply to understand your situation and answer your questions. Any decision happens on your timeline, not ours.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Does this cost anything?</h3>
+        <p>No. There is no cost or obligation to speak with Bryant, receive the guide, or ask questions about your options.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What if I already have a Medicare plan?</h3>
+        <p>That's common. Many people reach out simply to confirm their current plan still fits their needs, especially heading into the Annual Enrollment Period (October 15 &ndash; December 7).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bottom-cta">
+  <div class="container">
+    <h2>Have a question right now?</h2>
+    <p>You don't have to fill out a form to talk to Bryant. Call or text directly.</p>
+    <div class="btn-row">
+      <a href="tel:7138827196" class="btn-gold">Call 713-882-7196</a>
+      <a href="#leadForm" class="btn-outline">Request a Callback Instead</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">Bryant Waldron Insurance</div>
+      <div>Richmond, Sugar Land &amp; Greater Houston, Texas &middot; 713-882-7196 &middot; bryant@bwaldron-insurance.com</div>
+    </div>
+    <p class="disclaimer">Bryant Waldron is a licensed independent insurance agent (NPN 8221947). We do not offer every plan available in your area. Any information provided is limited to those plans we offer in your area. Please contact Medicare.gov, 1-800-MEDICARE, or your local State Health Insurance Assistance Program (SHIP) to get information on all of your options.</p>
+    <p class="disclaimer">Bryant Waldron Insurance is not connected with or endorsed by the U.S. government or the federal Medicare program.</p>
+    <p class="disclaimer">This site and its materials are available in alternate formats upon request. Please call 713-882-7196.</p>
+  </div>
+</footer>
+
+<script>
+  window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+  formspree('initForm', { formElement: '#medicareForm', formId: 'mkodobrg' });
+</script>
+<script src="https://unpkg.com/@formspree/ajax@1" defer></script>
+
+</body>
+</html>
