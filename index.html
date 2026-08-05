@@ -504,6 +504,21 @@
   formspree('initForm', { formElement: '#medicareForm', formId: 'mkodobrg' });
 </script>
 <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
+<script>
+  (function () {
+    var successMsg = document.getElementById('successMsg');
+    var pdfUrl = 'https://bwaldron-insurance.com/Understanding_Your_Medicare_Options.pdf';
 
+    var observer = new MutationObserver(function () {
+      var isVisible = window.getComputedStyle(successMsg).display !== 'none';
+      if (isVisible) {
+        observer.disconnect();
+        window.location.href = pdfUrl;
+      }
+    });
+
+    observer.observe(successMsg, { attributes: true, attributeFilter: ['style', 'class'] });
+  })();
+</script>
 </body>
 </html>
