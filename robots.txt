@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bwaldron-insurance.com/sitemap.xml
