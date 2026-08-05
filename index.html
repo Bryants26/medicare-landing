@@ -506,18 +506,23 @@
 <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 <script>
   (function () {
-    var successMsg = document.getElementById('successMsg');
     var pdfUrl = 'https://bwaldron-insurance.com/Understanding_Your_Medicare_Options.pdf';
+    var attempts = 0;
+    var maxAttempts = 60; // ~30 seconds at 500ms intervals
 
-    var observer = new MutationObserver(function () {
-      var isVisible = window.getComputedStyle(successMsg).display !== 'none';
-      if (isVisible) {
-        observer.disconnect();
+    var checkInterval = setInterval(function () {
+      attempts++;
+      var successMsg = document.getElementById('successMsg');
+
+      if (successMsg && window.getComputedStyle(successMsg).display !== 'none') {
+        clearInterval(checkInterval);
         window.location.href = pdfUrl;
       }
-    });
 
-    observer.observe(successMsg, { attributes: true, attributeFilter: ['style', 'class'] });
+      if (attempts >= maxAttempts) {
+        clearInterval(checkInterval);
+      }
+    }, 500);
   })();
 </script>
 </body>
