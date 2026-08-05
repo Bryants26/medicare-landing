@@ -48,6 +48,15 @@
   header .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
   .brand{font-size:1.3rem;font-weight:700;color:var(--white);letter-spacing:.3px;}
   .brand span{color:var(--gold-light);}
+  .header-right{display:flex;align-items:center;gap:22px;}
+.header-link{
+  font-family:'Segoe UI', Arial, sans-serif;
+  font-size:.95rem;
+  color:var(--cream);
+  text-decoration:none;
+  font-weight:600;
+}
+.header-link:hover{color:var(--gold-light);}
   .header-phone{
     font-family:'Segoe UI', Arial, sans-serif;
     font-size:1.15rem;
@@ -313,7 +322,10 @@
 <header>
   <div class="container">
     <div class="brand">BRYANT WALDRON <span>INSURANCE</span></div>
-    <a class="header-phone" href="tel:7138827196">713-882-7196</a>
+    <div class="header-right">
+      <a class="header-link" href="blog.html">Medicare Guide</a>
+      <a class="header-phone" href="tel:7138827196">713-882-7196</a>
+    </div>
   </div>
 </header>
 
@@ -480,11 +492,11 @@
   <div class="container">
     <h2>Have a question right now?</h2>
     <p>You don't have to fill out a form to talk to Bryant. Call or text directly.</p>
-    <div class="btn-row">
-      <a href="tel:7138827196" class="btn-gold">Call 713-882-7196</a>
-      <a href="#leadForm" class="btn-outline">Request a Callback Instead</a>
-    </div>
-  </div>
+   <div class="btn-row">
+  <a href="tel:7138827196" class="btn-gold">Call 713-882-7196</a>
+  <a href="#leadForm" class="btn-outline">Request a Callback Instead</a>
+  <a href="blog.html" class="btn-outline">Read Our Medicare Guide</a>
+</div>
 </section>
 
 <footer>
