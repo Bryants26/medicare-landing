@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SBQYZKYVWH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-SBQYZKYVWH');
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Medicare Questions Answered | Bryant Waldron Insurance | Richmond, Sugar Land & Houston Area, TX</title>
@@ -50,14 +57,14 @@
   .brand{font-size:1.3rem;font-weight:700;color:var(--white);letter-spacing:.3px;}
   .brand span{color:var(--gold-light);}
   .header-right{display:flex;align-items:center;gap:22px;}
-.header-link{
-  font-family:'Segoe UI', Arial, sans-serif;
-  font-size:.95rem;
-  color:var(--cream);
-  text-decoration:none;
-  font-weight:600;
-}
-.header-link:hover{color:var(--gold-light);}
+  .header-link{
+    font-family:'Segoe UI', Arial, sans-serif;
+    font-size:.95rem;
+    color:var(--cream);
+    text-decoration:none;
+    font-weight:600;
+  }
+  .header-link:hover{color:var(--gold-light);}
   .header-phone{
     font-family:'Segoe UI', Arial, sans-serif;
     font-size:1.15rem;
@@ -493,11 +500,12 @@
   <div class="container">
     <h2>Have a question right now?</h2>
     <p>You don't have to fill out a form to talk to Bryant. Call or text directly.</p>
-   <div class="btn-row">
-  <a href="tel:7138827196" class="btn-gold">Call 713-882-7196</a>
-  <a href="#leadForm" class="btn-outline">Request a Callback Instead</a>
-  <a href="blog.html" class="btn-outline">Read Our Medicare Guide</a>
-</div>
+    <div class="btn-row">
+      <a href="tel:7138827196" class="btn-gold">Call 713-882-7196</a>
+      <a href="#leadForm" class="btn-outline">Request a Callback Instead</a>
+      <a href="blog.html" class="btn-outline">Read Our Medicare Guide</a>
+    </div>
+  </div>
 </section>
 
 <footer>
@@ -521,7 +529,7 @@
   (function () {
     var pdfUrl = 'https://bwaldron-insurance.com/Understanding_Your_Medicare_Options.pdf';
     var attempts = 0;
-    var maxAttempts = 60; // ~30 seconds at 500ms intervals
+    var maxAttempts = 60;
 
     var checkInterval = setInterval(function () {
       attempts++;
@@ -538,5 +546,6 @@
     }, 500);
   })();
 </script>
+
 </body>
 </html>
