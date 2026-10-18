@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Words of Comfort</title>
+<meta name="description" content="Share what is weighing on your heart and receive calming, hopeful words from Scripture (King James Version). Private — nothing you type leaves your device.">
+<link rel="canonical" href="https://bwaldron-insurance.com/words-of-comfort.html">
+<style>
+  :root{
+    --navy: #0F2A4A;
+    --navy-deep: #081A30;
+    --gold: #B8912F;
+    --gold-light: #D8B863;
+    --cream: #FBF8F2;
+    --card: #FFFFFF;
+    --ink: #1C2B3A;
+    --ink-soft: #4A5A6A;
+    --line: #E3DCC9;
+    --chip: #F3EDE0;
+    --alert-bg: #FFF4F2;
+    --alert-line: #E2A69A;
+    --alert-ink: #7A2516;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --navy: #E9D9AE;
+      --navy-deep: #050E1A;
+      --gold: #D8B863;
+      --gold-light: #E9CF86;
+      --cream: #0B1726;
+      --card: #12223A;
+      --ink: #E8E4DA;
+      --ink-soft: #AEB8C4;
+      --line: #263A55;
+      --chip: #1A2D48;
+      --alert-bg: #2A1714;
+      --alert-line: #7A3B2F;
+      --alert-ink: #F4C4B8;
+    }
+  }
+  :root[data-theme="dark"]{
+    --navy: #E9D9AE;
+    --navy-deep: #050E1A;
+    --gold: #D8B863;
+    --gold-light: #E9CF86;
+    --cream: #0B1726;
+    --card: #12223A;
+    --ink: #E8E4DA;
+    --ink-soft: #AEB8C4;
+    --line: #263A55;
+    --chip: #1A2D48;
+    --alert-bg: #2A1714;
+    --alert-line: #7A3B2F;
+    --alert-ink: #F4C4B8;
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family: Georgia, 'Times New Roman', serif;
+    background:var(--cream);
+    color:var(--ink);
+    line-height:1.65;
+    font-size:19px;
+  }
+  body.large{font-size:23px;}
+  .sans{font-family:'Segoe UI', Arial, Helvetica, sans-serif;}
+  .wrap{max-width:760px;margin:0 auto;padding:0 16px;}
+
+  header{
+    background:var(--navy-deep);
+    border-bottom:3px solid var(--gold);
+    padding:14px 0;
+  }
+  header .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;}
+  .brand{color:#fff;font-weight:700;text-decoration:none;font-size:1.05rem;}
+  .brand span{color:var(--gold-light);}
+  .tools{display:flex;gap:8px;}
+  .tools button{
+    font:600 .8rem 'Segoe UI', Arial, sans-serif;
+    background:transparent;color:#F3EEE2;border:1px solid #3B5170;
+    border-radius:999px;padding:6px 12px;cursor:pointer;
+  }
+  .tools button:hover{border-color:var(--gold-light);}
+
+  .hero{padding:40px 0 8px;text-align:center;}
+  .hero h1{color:var(--navy);font-size:2rem;margin:0 0 .3em;line-height:1.2;}
+  .hero p{color:var(--ink-soft);margin:0 auto;max-width:560px;}
+
+  .ask{
+    background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:20px;margin:24px 0 16px;box-shadow:0 2px 10px rgba(15,42,74,.05);
+  }
+  .ask label{display:block;font-weight:700;color:var(--navy);margin-bottom:8px;}
+  textarea{
+    width:100%;min-height:130px;resize:vertical;
+    font:inherit;color:var(--ink);background:var(--cream);
+    border:1px solid var(--line);border-radius:10px;padding:12px 14px;
+  }
+  textarea:focus{outline:2px solid var(--gold);outline-offset:1px;}
+  .row{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-top:12px;}
+  .privacy{font-size:.78rem;color:var(--ink-soft);}
+  .btn{
+    font:700 1rem 'Segoe UI', Arial, sans-serif;
+    background:var(--gold);color:#1B1405;border:0;border-radius:10px;
+    padding:12px 22px;cursor:pointer;
+  }
+  .btn:hover{filter:brightness(1.06);}
+  .btn.ghost{background:transparent;color:var(--navy);border:1px solid var(--line);}
+
+  .chips-title{font-size:.85rem;color:var(--ink-soft);margin:6px 0 8px;}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;}
+  .chip{
+    font:600 .85rem 'Segoe UI', Arial, sans-serif;
+    background:var(--chip);color:var(--ink);border:1px solid var(--line);
+    border-radius:999px;padding:7px 13px;cursor:pointer;
+  }
+  .chip:hover{border-color:var(--gold);}
+
+  .crisis{
+    display:none;background:var(--alert-bg);border:1px solid var(--alert-line);
+    color:var(--alert-ink);border-radius:12px;padding:16px 18px;margin:20px 0 0;
+  }
+  .crisis.show{display:block;}
+  .crisis strong{display:block;font-size:1.05rem;margin-bottom:4px;}
+  .crisis a{color:inherit;font-weight:700;}
+
+  #results{margin:24px 0 8px;}
+  .intro{
+    border-left:4px solid var(--gold);padding:4px 0 4px 16px;margin:0 0 22px;
+    color:var(--ink);font-style:italic;
+  }
+  .theme{margin:0 0 30px;}
+  .theme h2{font-size:1.25rem;color:var(--navy);margin:0 0 4px;}
+  .theme .reflect{color:var(--ink-soft);margin:0 0 14px;}
+  .verse{
+    background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:18px 20px 14px;margin:0 0 12px;
+  }
+  .verse blockquote{margin:0 0 8px;font-size:1.08em;}
+  .verse cite{
+    display:block;font-style:normal;font-weight:700;color:var(--gold);
+    font-family:'Segoe UI', Arial, sans-serif;font-size:.85rem;letter-spacing:.3px;
+  }
+  .vactions{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap;}
+  .vactions button{
+    font:600 .75rem 'Segoe UI', Arial, sans-serif;background:transparent;
+    color:var(--ink-soft);border:1px solid var(--line);border-radius:999px;
+    padding:5px 11px;cursor:pointer;
+  }
+  .vactions button:hover{color:var(--ink);border-color:var(--gold);}
+  .vactions button.on{color:var(--gold);border-color:var(--gold);}
+  .prayer{
+    background:var(--chip);border-radius:12px;padding:14px 18px;margin-top:6px;
+  }
+  .prayer b{font-family:'Segoe UI', Arial, sans-serif;font-size:.8rem;letter-spacing:.6px;text-transform:uppercase;color:var(--ink-soft);display:block;margin-bottom:4px;}
+  .more{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:8px 0 10px;}
+
+  #saved{margin:28px 0;}
+  #saved h2{font-size:1.15rem;color:var(--navy);}
+  .empty{color:var(--ink-soft);font-size:.9rem;}
+
+  footer{
+    border-top:1px solid var(--line);margin-top:40px;padding:22px 0 36px;
+    color:var(--ink-soft);font-size:.82rem;text-align:center;
+  }
+  footer a{color:var(--ink-soft);}
+  .toast{
+    position:fixed;left:50%;bottom:22px;transform:translateX(-50%);
+    background:var(--navy-deep);color:#fff;padding:9px 16px;border-radius:999px;
+    font:600 .85rem 'Segoe UI', Arial, sans-serif;opacity:0;transition:opacity .2s;pointer-events:none;
+  }
+  .toast.show{opacity:1;}
+  @media (max-width:520px){
+    .hero h1{font-size:1.6rem;}
+    .btn{width:100%;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="/">Bryant Waldron <span>Insurance</span></a>
+    <div class="tools sans">
+      <button type="button" id="sizeBtn" aria-pressed="false">A+ Larger text</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <h1>Words of Comfort</h1>
+    <p>Tell us what's troubling you, in your own words. We'll look through Scripture for verses that speak to it.</p>
+  </section>
+
+  <section class="ask">
+    <label for="trouble">What is weighing on your heart today?</label>
+    <textarea id="trouble" placeholder="For example: &ldquo;I can't stop worrying about my health and my bills, and I can't sleep at night.&rdquo;"></textarea>
+    <div class="row">
+      <span class="privacy sans">🔒 Private: what you type stays on this device and is never sent anywhere.</span>
+      <button class="btn" id="findBtn" type="button">Find comfort</button>
+    </div>
+    <div style="margin-top:16px">
+      <div class="chips-title sans">Or choose what you're feeling:</div>
+      <div class="chips" id="chips"></div>
+    </div>
+  </section>
+
+  <div class="crisis sans" id="crisis" role="alert">
+    <strong>You don't have to carry this alone.</strong>
+    If you are thinking about ending your life or hurting yourself, please reach out right now.
+    Call or text <a href="tel:988">988</a> (Suicide &amp; Crisis Lifeline, free, 24/7), or call <a href="tel:911">911</a> if you are in immediate danger.
+    A pastor, family member, or friend can also sit with you through this.
+  </div>
+
+  <section id="results" aria-live="polite"></section>
+
+  <section id="saved">
+    <h2>Verses you've saved</h2>
+    <div id="savedList"><p class="empty sans">Tap “Save” on any verse to keep it here.</p></div>
+  </section>
+</main>
+
+<footer class="sans">
+  <div class="wrap">
+    Scripture quotations are from the King James Version (public domain).<br>
+    This page offers encouragement and is not a substitute for pastoral, medical, or mental-health care.<br>
+    Shared freely by Bryant Waldron Insurance, Richmond, Texas &middot; <a href="/">Visit our home page</a>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// Each theme: keywords (matched as word prefixes), a short reflection, verses (KJV), and a prayer.
+const THEMES = [
+  { id:'anxiety', label:'Worry & anxiety', chip:'Worried',
+    keys:['worr','anxi','nervous','stress','panic','overthink','uneasy','restless','on edge','what if','can\'t stop thinking','racing'],
+    reflect:'Worry tries to carry tomorrow’s weight today. Scripture invites you to set that weight down, one prayer at a time.',
+    verses:[
+      ['Philippians 4:6–7','Be careful for nothing; but in every thing by prayer and supplication with thanksgiving let your requests be made known unto God. And the peace of God, which passeth all understanding, shall keep your hearts and minds through Christ Jesus.'],
+      ['1 Peter 5:7','Casting all your care upon him; for he careth for you.'],
+      ['Matthew 6:34','Take therefore no thought for the morrow: for the morrow shall take thought for the things of itself. Sufficient unto the day is the evil thereof.'],
+      ['Psalm 94:19','In the multitude of my thoughts within me thy comforts delight my soul.'],
+      ['Psalm 55:22','Cast thy burden upon the LORD, and he shall sustain thee: he shall never suffer the righteous to be moved.']
+    ],
+    prayer:'Lord, my thoughts are racing. I give You what I cannot control. Guard my heart and mind with Your peace. Amen.' },
+
+  { id:'fear', label:'Fear', chip:'Afraid',
+    keys:['afraid','fear','scared','frighten','terrif','dread','danger','unsafe','threat'],
+    reflect:'Fear is real, but it is not the final word. Again and again God says, “Fear not, for I am with thee.”',
+    verses:[
+      ['Isaiah 41:10','Fear thou not; for I am with thee: be not dismayed; for I am thy God: I will strengthen thee; yea, I will help thee; yea, I will uphold thee with the right hand of my righteousness.'],
+      ['2 Timothy 1:7','For God hath not given us the spirit of fear; but of power, and of love, and of a sound mind.'],
+      ['Psalm 56:3','What time I am afraid, I will trust in thee.'],
+      ['Psalm 34:4','I sought the LORD, and he heard me, and delivered me from all my fears.'],
+      ['Joshua 1:9','Have not I commanded thee? Be strong and of a good courage; be not afraid, neither be thou dismayed: for the LORD thy God is with thee whithersoever thou goest.'],
+      ['Psalm 27:1','The LORD is my light and my salvation; whom shall I fear? the LORD is the strength of my life; of whom shall I be afraid?']
+    ],
+    prayer:'Father, I am afraid. Hold my hand and remind me that You are near. Give me courage for this moment. Amen.' },
+
+  { id:'grief', label:'Grief & loss', chip:'Grieving',
+    keys:['grie','mourn','loss','lost my','passed away','passed on','died','death of','funeral','miss him','miss her','widow','widower','gone now','buried','my late'],
+    reflect:'Grief is love with nowhere to go. God does not rush your tears; He draws near to the brokenhearted.',
+    verses:[
+      ['Psalm 34:18','The LORD is nigh unto them that are of a broken heart; and saveth such as be of a contrite spirit.'],
+      ['Matthew 5:4','Blessed are they that mourn: for they shall be comforted.'],
+      ['Psalm 147:3','He healeth the broken in heart, and bindeth up their wounds.'],
+      ['Revelation 21:4','And God shall wipe away all tears from their eyes; and there shall be no more death, neither sorrow, nor crying, neither shall there be any more pain: for the former things are passed away.'],
+      ['2 Corinthians 1:3–4','Blessed be God, even the Father of our Lord Jesus Christ, the Father of mercies, and the God of all comfort; Who comforteth us in all our tribulation, that we may be able to comfort them which are in any trouble, by the comfort wherewith we ourselves are comforted of God.'],
+      ['John 14:1–2','Let not your heart be troubled: ye believe in God, believe also in me. In my Father’s house are many mansions: if it were not so, I would have told you. I go to prepare a place for you.']
+    ],
+    prayer:'God of all comfort, my heart is broken. Sit with me in this sorrow, hold the one I miss, and carry me through each day. Amen.' },
+
+  { id:'lonely', label:'Loneliness', chip:'Lonely',
+    keys:['lonel','alone','isolat','no one','nobody','no friends','forgotten','left out','abandon','by myself','empty house'],
+    reflect:'Even when the house is quiet and the phone doesn’t ring, you are not unseen. God promises never to leave you.',
+    verses:[
+      ['Deuteronomy 31:8','And the LORD, he it is that doth go before thee; he will be with thee, he will not fail thee, neither forsake thee: fear not, neither be dismayed.'],
+      ['Psalm 27:10','When my father and my mother forsake me, then the LORD will take me up.'],
+      ['Psalm 68:6','God setteth the solitary in families: he bringeth out those which are bound with chains: but the rebellious dwell in a dry land.'],
+      ['Psalm 139:9–10','If I take the wings of the morning, and dwell in the uttermost parts of the sea; Even there shall thy hand lead me, and thy right hand shall hold me.'],
+      ['Matthew 28:20','Teaching them to observe all things whatsoever I have commanded you: and, lo, I am with you alway, even unto the end of the world. Amen.']
+    ],
+    prayer:'Lord, I feel alone. Let me sense Your presence today, and bring someone into my path who needs me as much as I need them. Amen.' },
+
+  { id:'health', label:'Illness & health', chip:'Sick or in pain',
+    keys:['sick','ill','illness','health','pain','hurt','cancer','diagnos','surgery','hospital','doctor','test results','chemo','treatment','disease','heart condition','diabet','stroke','chronic','medication','dementia','alzheim','injur','heal'],
+    reflect:'When the body is weak, God’s strength is not. He is present in waiting rooms, hospital beds, and long nights.',
+    verses:[
+      ['Psalm 73:26','My flesh and my heart faileth: but God is the strength of my heart, and my portion for ever.'],
+      ['Psalm 41:3','The LORD will strengthen him upon the bed of languishing: thou wilt make all his bed in his sickness.'],
+      ['2 Corinthians 12:9','And he said unto me, My grace is sufficient for thee: for my strength is made perfect in weakness. Most gladly therefore will I rather glory in my infirmities, that the power of Christ may rest upon me.'],
+      ['Psalm 103:2–3','Bless the LORD, O my soul, and forget not all his benefits: Who forgiveth all thine iniquities; who healeth all thy diseases;'],
+      ['Isaiah 40:29','He giveth power to the faint; and to them that have no might he increaseth strength.'],
+      ['James 5:15','And the prayer of faith shall save the sick, and the Lord shall raise him up; and if he have committed sins, they shall be forgiven him.']
+    ],
+    prayer:'Great Physician, I bring You my body and my fears about it. Guide my doctors, ease my pain, and give me strength for today. Amen.' },
+
+  { id:'money', label:'Money worries', chip:'Money worries',
+    keys:['money','bill','debt','afford','broke','financ','rent','mortgage','pay for','paycheck','income','budget','expens','bank','poor','fixed income','social security','savings','job loss','laid off','evict','groceries'],
+    reflect:'Financial strain can feel all-consuming. God knows exactly what you need, and He has cared for His people through every lean season.',
+    verses:[
+      ['Philippians 4:19','But my God shall supply all your need according to his riches in glory by Christ Jesus.'],
+      ['Matthew 6:26','Behold the fowls of the air: for they sow not, neither do they reap, nor gather into barns; yet your heavenly Father feedeth them. Are ye not much better than they?'],
+      ['Matthew 6:33','But seek ye first the kingdom of God, and his righteousness; and all these things shall be added unto you.'],
+      ['Psalm 37:25','I have been young, and now am old; yet have I not seen the righteous forsaken, nor his seed begging bread.'],
+      ['Hebrews 13:5','Let your conversation be without covetousness; and be content with such things as ye have: for he hath said, I will never leave thee, nor forsake thee.']
+    ],
+    prayer:'Provider God, You see every bill and every need. Give me wisdom with what I have, open doors I cannot see, and quiet my anxious heart. Amen.' },
+
+  { id:'weary', label:'Weariness', chip:'Exhausted',
+    keys:['tired','weary','exhaust','worn out','burn','drained','no energy','can\'t go on','give up','fatigue','run down','heavy'],
+    reflect:'You were never meant to carry everything. Jesus’ invitation is simple: come, and rest.',
+    verses:[
+      ['Matthew 11:28–30','Come unto me, all ye that labour and are heavy laden, and I will give you rest. Take my yoke upon you, and learn of me; for I am meek and lowly in heart: and ye shall find rest unto your souls. For my yoke is easy, and my burden is light.'],
+      ['Isaiah 40:31','But they that wait upon the LORD shall renew their strength; they shall mount up with wings as eagles; they shall run, and not be weary; and they shall walk, and not faint.'],
+      ['Galatians 6:9','And let us not be weary in well doing: for in due season we shall reap, if we faint not.'],
+      ['Psalm 62:1','Truly my soul waiteth upon God: from him cometh my salvation.']
+    ],
+    prayer:'Jesus, I am tired. I come to You as I am. Give me rest for my body and my soul. Amen.' },
+
+  { id:'sad', label:'Sadness & discouragement', chip:'Sad or hopeless',
+    keys:['sad','depress','down','hopeless','despair','discourag','cry','crying','tears','unhappy','miserable','blue','dark place','numb','no hope','pointless','worthless','low','want to die','don\'t want to live','no reason to live','give up on life'],
+    reflect:'Even the psalmists knew deep sadness — and they told God honestly. Morning does come.',
+    verses:[
+      ['Psalm 30:5','For his anger endureth but a moment; in his favour is life: weeping may endure for a night, but joy cometh in the morning.'],
+      ['Psalm 42:11','Why art thou cast down, O my soul? and why art thou disquieted within me? hope thou in God: for I shall yet praise him, who is the health of my countenance, and my God.'],
+      ['Lamentations 3:22–23','It is of the LORD’s mercies that we are not consumed, because his compassions fail not. They are new every morning: great is thy faithfulness.'],
+      ['Psalm 40:1–2','I waited patiently for the LORD; and he inclined unto me, and heard my cry. He brought me up also out of an horrible pit, out of the miry clay, and set my feet upon a rock, and established my goings.'],
+      ['Jeremiah 29:11','For I know the thoughts that I think toward you, saith the LORD, thoughts of peace, and not of evil, to give you an expected end.'],
+      ['Romans 15:13','Now the God of hope fill you with all joy and peace in believing, that ye may abound in hope, through the power of the Holy Ghost.']
+    ],
+    prayer:'Lord, my heart is heavy. Lift my head. Let me see one small sign of Your goodness today, and help me hold on until morning. Amen.' },
+
+  { id:'guilt', label:'Guilt & regret', chip:'Guilty or ashamed',
+    keys:['guilt','shame','ashamed','regret','sorry','mistake','forgive me','sinned','my sins','messed up','failed','failure','blame myself','my fault','wish i had','should have'],
+    reflect:'Regret looks backward; grace looks at you with love. What you confess to God, He does not hold against you.',
+    verses:[
+      ['1 John 1:9','If we confess our sins, he is faithful and just to forgive us our sins, and to cleanse us from all unrighteousness.'],
+      ['Psalm 103:12','As far as the east is from the west, so far hath he removed our transgressions from us.'],
+      ['Romans 8:1','There is therefore now no condemnation to them which are in Christ Jesus, who walk not after the flesh, but after the Spirit.'],
+      ['Isaiah 1:18','Come now, and let us reason together, saith the LORD: though your sins be as scarlet, they shall be as white as snow; though they be red like crimson, they shall be as wool.'],
+      ['2 Corinthians 5:17','Therefore if any man be in Christ, he is a new creature: old things are passed away; behold, all things are become new.']
+    ],
+    prayer:'Merciful Father, I bring You what I regret. Forgive me, wash me clean, and help me walk forward in Your grace. Amen.' },
+
+  { id:'anger', label:'Anger & frustration', chip:'Angry',
+    keys:['angry','anger','mad at','furious','frustrat','resent','bitter','rage','annoy','fed up','unfair','betray'],
+    reflect:'Anger is a signal, not a sin in itself. Scripture helps us feel it honestly without letting it rule us.',
+    verses:[
+      ['James 1:19–20','Wherefore, my beloved brethren, let every man be swift to hear, slow to speak, slow to wrath: For the wrath of man worketh not the righteousness of God.'],
+      ['Ephesians 4:26','Be ye angry, and sin not: let not the sun go down upon your wrath:'],
+      ['Proverbs 15:1','A soft answer turneth away wrath: but grievous words stir up anger.'],
+      ['Psalm 37:8','Cease from anger, and forsake wrath: fret not thyself in any wise to do evil.']
+    ],
+    prayer:'Lord, I am upset. Calm my spirit, guard my words, and show me the right way forward. Amen.' },
+
+  { id:'family', label:'Family & relationships', chip:'Family trouble',
+    keys:['family','my son','daughter','husband','wife','spouse','marriage','divorce','children','kids','grandchild','grandson','granddaughter','brother','sister','mother','father','my mom','dad','argu','fight','estranged','relationship','friend','won\'t talk','not speaking'],
+    reflect:'The people we love most can also hurt us most. God cares about every strained relationship and every empty chair at the table.',
+    verses:[
+      ['Ephesians 4:32','And be ye kind one to another, tenderhearted, forgiving one another, even as God for Christ’s sake hath forgiven you.'],
+      ['Colossians 3:13','Forbearing one another, and forgiving one another, if any man have a quarrel against any: even as Christ forgave you, so also do ye.'],
+      ['Romans 12:18','If it be possible, as much as lieth in you, live peaceably with all men.'],
+      ['1 Corinthians 13:7','Beareth all things, believeth all things, hopeth all things, endureth all things.']
+    ],
+    prayer:'Father, I lift up my family to You. Soften hearts — including mine — bring healing where there is hurt, and help us love one another well. Amen.' },
+
+  { id:'aging', label:'Growing older', chip:'Getting older',
+    keys:['old','older','aging','elderly','retire','senior','memory','forgetful','can\'t do what i used','losing my independence','nursing home','assisted living','turning 65'],
+    reflect:'Your years are not a decline in God’s eyes. He promises to carry you all the way, and your life still bears fruit.',
+    verses:[
+      ['Isaiah 46:4','And even to your old age I am he; and even to hoar hairs will I carry you: I have made, and I will bear; even I will carry, and will deliver you.'],
+      ['Psalm 92:14','They shall still bring forth fruit in old age; they shall be fat and flourishing;'],
+      ['2 Corinthians 4:16','For which cause we faint not; but though our outward man perish, yet the inward man is renewed day by day.'],
+      ['Psalm 71:9','Cast me not off in the time of old age; forsake me not when my strength faileth.'],
+      ['Proverbs 16:31','The hoary head is a crown of glory, if it be found in the way of righteousness.']
+    ],
+    prayer:'Lord of all my days, thank You for carrying me this far. Renew me inwardly, and use the years I have left for Your good purposes. Amen.' },
+
+  { id:'sleep', label:'Sleeplessness', chip:'Can’t sleep',
+    keys:['sleep','insomnia','awake at night','can\'t rest','up all night','nightmare','3am','middle of the night','toss'],
+    reflect:'When the night feels long, remember: the One who watches over you never sleeps, so you can.',
+    verses:[
+      ['Psalm 4:8','I will both lay me down in peace, and sleep: for thou, LORD, only makest me dwell in safety.'],
+      ['Proverbs 3:24','When thou liest down, thou shalt not be afraid: yea, thou shalt lie down, and thy sleep shall be sweet.'],
+      ['Psalm 121:3–4','He will not suffer thy foot to be moved: he that keepeth thee will not slumber. Behold, he that keepeth Israel shall neither slumber nor sleep.'],
+      ['Psalm 3:5','I laid me down and slept; I awaked; for the LORD sustained me.'],
+      ['Psalm 127:2','It is vain for you to rise up early, to sit up late, to eat the bread of sorrows: for so he giveth his beloved sleep.']
+    ],
+    prayer:'Lord, quiet my mind tonight. I hand You every worry so I can rest in Your safekeeping. Amen.' },
+
+  { id:'guidance', label:'Uncertainty & decisions', chip:'Unsure what to do',
+    keys:['decid','decision','confus','unsure','uncertain','don\'t know what to do','which way','direction','guidance','future','change','moving','choice','choose','lost','crossroad'],
+    reflect:'You don’t need to see the whole road — only the next step. God promises to light the way.',
+    verses:[
+      ['Proverbs 3:5–6','Trust in the LORD with all thine heart; and lean not unto thine own understanding. In all thy ways acknowledge him, and he shall direct thy paths.'],
+      ['Psalm 32:8','I will instruct thee and teach thee in the way which thou shalt go: I will guide thee with mine eye.'],
+      ['James 1:5','If any of you lack wisdom, let him ask of God, that giveth to all men liberally, and upbraideth not; and it shall be given him.'],
+      ['Psalm 119:105','Thy word is a lamp unto my feet, and a light unto my path.'],
+      ['Isaiah 30:21','And thine ears shall hear a word behind thee, saying, This is the way, walk ye in it, when ye turn to the right hand, and when ye turn to the left.']
+    ],
+    prayer:'Lord, I don’t know which way to go. Give me wisdom, open the right doors, close the wrong ones, and give me peace in the choice. Amen.' },
+
+  { id:'overwhelmed', label:'Feeling overwhelmed', chip:'Overwhelmed',
+    keys:['overwhelm','too much','falling apart','can\'t handle','can\'t cope','struggl','trouble','hard time','difficult','everything is going wrong','crisis','storm','weak'],
+    reflect:'When life piles up, God is not far off. He is “a very present help in trouble.”',
+    verses:[
+      ['Psalm 46:1','God is our refuge and strength, a very present help in trouble.'],
+      ['Psalm 61:2','From the end of the earth will I cry unto thee, when my heart is overwhelmed: lead me to the rock that is higher than I.'],
+      ['2 Corinthians 4:8–9','We are troubled on every side, yet not distressed; we are perplexed, but not in despair; Persecuted, but not forsaken; cast down, but not destroyed;'],
+      ['Nahum 1:7','The LORD is good, a strong hold in the day of trouble; and he knoweth them that trust in him.'],
+      ['Philippians 4:13','I can do all things through Christ which strengtheneth me.']
+    ],
+    prayer:'Lord, it’s all too much. Be my refuge. Help me take just the next small step, and carry what I cannot. Amen.' },
+
+  { id:'caregiver', label:'Caring for a loved one', chip:'Caregiving',
+    keys:['caregiv','caring for','take care of my','taking care','look after','looking after','my husband is sick','my wife is sick','my mother is','my father is','hospice','bedridden'],
+    reflect:'Caring for someone you love is holy, exhausting work. God sees every quiet sacrifice — and He cares for the caregiver too.',
+    verses:[
+      ['Galatians 6:2','Bear ye one another’s burdens, and so fulfil the law of Christ.'],
+      ['Galatians 6:9','And let us not be weary in well doing: for in due season we shall reap, if we faint not.'],
+      ['Matthew 25:40','And the King shall answer and say unto them, Verily I say unto you, Inasmuch as ye have done it unto one of the least of these my brethren, ye have done it unto me.'],
+      ['Isaiah 40:31','But they that wait upon the LORD shall renew their strength; they shall mount up with wings as eagles; they shall run, and not be weary; and they shall walk, and not faint.']
+    ],
+    prayer:'Lord, give me patience and strength as I care for the one I love. Refresh me when I am empty, and let me feel Your care for me, too. Amen.' },
+
+  { id:'waiting', label:'Waiting', chip:'Waiting on news',
+    keys:['wait','waiting','patien','how long','results','news','haven\'t heard','delay','pending'],
+    reflect:'Waiting is one of the hardest things we do. God is at work even in the in-between.',
+    verses:[
+      ['Psalm 27:14','Wait on the LORD: be of good courage, and he shall strengthen thine heart: wait, I say, on the LORD.'],
+      ['Lamentations 3:25–26','The LORD is good unto them that wait for him, to the soul that seeketh him. It is good that a man should both hope and quietly wait for the salvation of the LORD.'],
+      ['Romans 8:28','And we know that all things work together for good to them that love God, to them who are the called according to his purpose.']
+    ],
+    prayer:'Lord, waiting is hard. Give me patience and courage, and help me trust You with the outcome. Amen.' },
+
+  { id:'mortality', label:'Facing the end of life', chip:'Fear of death',
+    keys:['dying','afraid to die','death','end of life','terminal','heaven','eternity','afterlife','my time is short','last days'],
+    reflect:'For those who trust in Christ, death is not the end of the story. Nothing can separate you from the love of God.',
+    verses:[
+      ['John 11:25','Jesus said unto her, I am the resurrection, and the life: he that believeth in me, though he were dead, yet shall he live:'],
+      ['Psalm 23:4','Yea, though I walk through the valley of the shadow of death, I will fear no evil: for thou art with me; thy rod and thy staff they comfort me.'],
+      ['Romans 8:38–39','For I am persuaded, that neither death, nor life, nor angels, nor principalities, nor powers, nor things present, nor things to come, Nor height, nor depth, nor any other creature, shall be able to separate us from the love of God, which is in Christ Jesus our Lord.'],
+      ['1 Corinthians 15:55','O death, where is thy sting? O grave, where is thy victory?'],
+      ['John 14:1–2','Let not your heart be troubled: ye believe in God, believe also in me. In my Father’s house are many mansions: if it were not so, I would have told you. I go to prepare a place for you.']
+    ],
+    prayer:'Lord Jesus, You are the resurrection and the life. Take away my fear, hold me close, and give me Your peace for whatever lies ahead. Amen.' },
+
+  { id:'peace', label:'Peace for today', chip:'I just need peace',
+    keys:['peace','calm','quiet','still','comfort','encourag','hope','pray','prayer','faith','god','jesus','lord'],
+    reflect:'Whatever brought you here today, these words are for you. Breathe slowly and read them twice.',
+    verses:[
+      ['John 14:27','Peace I leave with you, my peace I give unto you: not as the world giveth, give I unto you. Let not your heart be troubled, neither let it be afraid.'],
+      ['Isaiah 26:3','Thou wilt keep him in perfect peace, whose mind is stayed on thee: because he trusteth in thee.'],
+      ['Psalm 46:10','Be still, and know that I am God: I will be exalted among the heathen, I will be exalted in the earth.'],
+      ['Psalm 121:1–2','I will lift up mine eyes unto the hills, from whence cometh my help. My help cometh from the LORD, which made heaven and earth.'],
+      ['Numbers 6:24–26','The LORD bless thee, and keep thee: The LORD make his face shine upon thee, and be gracious unto thee: The LORD lift up his countenance upon thee, and give thee peace.']
+    ],
+    prayer:'Lord, fill me with Your peace that passes understanding. Be near to me today. Amen.' }
+];
+
+const CRISIS = /\b(suicid\w*|kill (my ?self|me)|end (my|it all)|end my life|want(ed)? to die|wish i (was|were) dead|better off dead|no reason to live|hurt(ing)? myself|self[- ]?harm|cut(ting)? myself|don'?t want to (live|be here|wake up))\b/i;
+
+const $ = id => document.getElementById(id);
+const store = {
+  get(k, d){ try{ const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; }catch(e){ return d; } },
+  set(k, v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
+};
+const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const reEsc = s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+// Precompile keyword regexes: match at the start of a word, so "worr" hits "worried", "worrying".
+THEMES.forEach(t => {
+  t.res = t.keys.map(k => new RegExp('(^|[^a-z])' + reEsc(k), 'i'));
+  t.shown = 0;
+});
+
+function scoreThemes(text){
+  const t = ' ' + text.toLowerCase().replace(/[\u2018\u2019]/g, "'") + ' ';
+  return THEMES.map(th => {
+    let s = 0;
+    th.res.forEach((re, i) => { if (re.test(t)) s += th.keys[i].includes(' ') ? 2 : 1; });
+    if (th.id === 'peace') s *= 0.5; // general words shouldn't outrank specific troubles
+    return { th, s };
+  }).filter(x => x.s > 0).sort((a, b) => b.s - a.s);
+}
+
+function shuffle(a){ a = a.slice(); for (let i = a.length - 1; i > 0; i--){ const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+
+let current = [];
+
+function verseHTML(ref, text){
+  const saved = store.get('woc-saved', []).some(v => v[0] === ref);
+  return `<div class="verse"><blockquote>“${esc(text)}”</blockquote><cite>${esc(ref)} (KJV)</cite>
+    <div class="vactions sans">
+      <button type="button" data-act="listen" data-ref="${esc(ref)}">\u{1F50A} Listen</button>
+      <button type="button" data-act="copy" data-ref="${esc(ref)}">Copy</button>
+      <button type="button" data-act="save" data-ref="${esc(ref)}" class="${saved ? 'on' : ''}">${saved ? '★ Saved' : '☆ Save'}</button>
+    </div></div>`;
+}
+
+function findVerse(ref){
+  for (const t of THEMES) for (const v of t.verses) if (v[0] === ref) return v;
+  return null;
+}
+
+function render(themes, userText){
+  const out = $('results');
+  const intro = userText
+    ? 'Thank you for sharing that. Whatever you’re facing, you are not alone. Here are words from Scripture for what you described.'
+    : 'Here are words from Scripture for what you’re feeling.';
+  let html = `<p class="intro">${intro}</p>`;
+  themes.forEach(th => {
+    th.order = shuffle(th.verses);
+    th.shown = Math.min(3, th.order.length);
+    html += `<div class="theme" id="t-${th.id}"><h2>${esc(th.label)}</h2><p class="reflect">${esc(th.reflect)}</p>
+      <div class="vlist">${th.order.slice(0, th.shown).map(v => verseHTML(v[0], v[1])).join('')}</div>
+      <div class="more"></div>
+      <div class="prayer"><b>A short prayer</b>${esc(th.prayer)}</div></div>`;
+  });
+  html += `<div class="more"><button class="btn ghost" type="button" id="againBtn">Share something else</button></div>`;
+  out.innerHTML = html;
+  themes.forEach(updateMore);
+  current = themes;
+  $('againBtn').onclick = () => { $('trouble').value = ''; $('trouble').focus(); window.scrollTo({top: $('trouble').getBoundingClientRect().top + window.scrollY - 80, behavior:'smooth'}); };
+  out.scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+function updateMore(th){
+  const box = document.querySelector(`#t-${th.id} .more`);
+  if (!box) return;
+  if (th.shown < th.order.length){
+    box.innerHTML = `<button class="btn ghost" type="button">Show another verse</button>`;
+    box.firstChild.onclick = () => {
+      const v = th.order[th.shown++];
+      document.querySelector(`#t-${th.id} .vlist`).insertAdjacentHTML('beforeend', verseHTML(v[0], v[1]));
+      updateMore(th);
+    };
+  } else box.innerHTML = '';
+}
+
+function search(){
+  const text = $('trouble').value.trim();
+  $('crisis').classList.toggle('show', CRISIS.test(text));
+  if (!text){ toast('Write a few words about what’s on your heart, or tap a feeling below.'); return; }
+  let hits = scoreThemes(text).slice(0, 3).map(x => x.th);
+  if (!hits.length) hits = [THEMES.find(t => t.id === 'peace'), THEMES.find(t => t.id === 'overwhelmed')];
+  render(hits, text);
+}
+
+function renderSaved(){
+  const list = store.get('woc-saved', []);
+  $('savedList').innerHTML = list.length
+    ? list.map(v => verseHTML(v[0], v[1])).join('')
+    : '<p class="empty sans">Tap “Save” on any verse to keep it here.</p>';
+}
+
+let toastTimer;
+function toast(msg){ const t = $('toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => t.classList.remove('show'), 2400); }
+
+document.addEventListener('click', e => {
+  const b = e.target.closest('button[data-act]');
+  if (!b) return;
+  const v = findVerse(b.dataset.ref);
+  if (!v) return;
+  const [ref, text] = v;
+  if (b.dataset.act === 'listen'){
+    if (!('speechSynthesis' in window)){ toast('Read-aloud isn’t supported on this device.'); return; }
+    speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(text.replace(/LORD/g, 'Lord') + ' ' + ref.replace('–', ' to '));
+    u.rate = 0.88;
+    speechSynthesis.speak(u);
+  } else if (b.dataset.act === 'copy'){
+    const s = `“${text}” — ${ref} (KJV)`;
+    (navigator.clipboard ? navigator.clipboard.writeText(s) : Promise.reject()).then(() => toast('Verse copied'), () => toast('Couldn’t copy on this device'));
+  } else if (b.dataset.act === 'save'){
+    let list = store.get('woc-saved', []);
+    const has = list.some(x => x[0] === ref);
+    list = has ? list.filter(x => x[0] !== ref) : [[ref, text], ...list];
+    store.set('woc-saved', list);
+    document.querySelectorAll(`button[data-act="save"][data-ref="${CSS.escape(ref)}"]`).forEach(x => { x.classList.toggle('on', !has); x.textContent = !has ? '★ Saved' : '☆ Save'; });
+    renderSaved();
+    toast(has ? 'Removed from saved' : 'Saved');
+  }
+});
+
+// Feeling chips
+$('chips').innerHTML = THEMES.map(t => `<button type="button" class="chip" data-theme="${t.id}">${esc(t.chip)}</button>`).join('');
+$('chips').addEventListener('click', e => {
+  const c = e.target.closest('.chip'); if (!c) return;
+  $('crisis').classList.remove('show');
+  render([THEMES.find(t => t.id === c.dataset.theme)], '');
+});
+
+$('findBtn').onclick = search;
+$('trouble').addEventListener('keydown', e => { if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) search(); });
+
+// Larger text toggle (remembered per device)
+function applySize(on){ document.body.classList.toggle('large', on); $('sizeBtn').setAttribute('aria-pressed', on); $('sizeBtn').textContent = on ? 'A− Normal text' : 'A+ Larger text'; }
+applySize(store.get('woc-large', false));
+$('sizeBtn').onclick = () => { const on = !document.body.classList.contains('large'); applySize(on); store.set('woc-large', on); };
+
+renderSaved();
+</script>
+</body>
+</html>
